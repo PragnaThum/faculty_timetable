@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" >
+
+	
+   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+</head>
+<style>
+body{
+background-color:#f2f2f2;
+}
+</style>
+
+<body>
+
+<div class="container pt-5">
+ <div class="row  d-flex justify-content-center">
+	 <div class="col-md-5 p-4 border">
+
+	 <h2>Select the Data</h2>
+
+		<form name="myform" id="myForm">
+			<select class="form-select" id="category_sel" size="1">
+				<option value="" selected="selected">-- Branch --</option>
+			</select>
+			<br>
+			<br>
+		
+			<select class="form-select" id="topic_sel" size="1">
+				<option value="" selected="selected">-- Select Section --</option>
+			</select>
+			<br>
+			<br>   
+			
+			<button type="button" id="filter_s" class="btn btn-primary">Submit</button>
+
+		</form>
+	 </div>
+ </div>
+
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 pt-4">
+            <script async
+                src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1190033123418031"
+                crossorigin="anonymous"></script>
+            <!-- live_demo_page -->
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1190033123418031"
+                data-ad-slot="5335471635" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+<script> 
+
+var countryStateInfo = {
+	"CSE": {
+		"A": ["xyz.html"],
+		"B": ["xyz.html"],
+		"C": ["xyz.html"],
+                "D": ["xyz.html"],
+		"E": ["xyz.html"],
+		"F": ["xyz.html"],
+                "G": ["xyz.html"]
+		},
+	"CSM": {
+		"A": ["xyz.html"],
+		"B": ["xyz.html"]
+	},
+	"CSC": {
+		"A": ["xyz.html"],
+		"B": ["xyz.html"]
+	},
+	"CSD": {
+		"A": ["xyz.html"],
+		"B": ["xyz.html"]
+	},
+        "IT": {
+		"A": ["xyz.html"],
+		"B": ["xyz.html"]
+	},
+	"ECE": {
+		"": ["xyz.html"]
+		
+	},
+	"EEE": {
+		//"Dynamic From field": ["https://bootstrapfriendly.com/blog/dynamically-add-or-remove-form-input-fields-using-jquery/"],
+		"": ["xyz.html"]
+	},
+	"MECH": {
+                "": ["xyz.html"]
+		//"Bootstrap 4": ["https://bootstrapfriendly.com/blog/service-displaying-with-icon-and-danger-hover-effect-on-div-hover/"],
+		//"Bootstrap 5": ["https://bootstrapfriendly.com/blog/creating-tabs-design-with-bootstrap-5/"]
+	}
+
+}
+
+
+
+window.onload = function () {
+	//Get html elements
+	var category_sel = document.getElementById("category_sel");
+	var topic_sel = document.getElementById("topic_sel");	
+	//Load countries
+	for (var country in countryStateInfo) {
+		category_sel.options[category_sel.options.length] = new Option(country, country);
+	}
+	//County Changed
+	category_sel.onchange = function () {
+		 topic_sel.length = 1; // remove all options bar first
+		 if (this.selectedIndex < 1)
+			 return; // done
+		 
+		 for (var state in countryStateInfo[this.value]) {
+			 topic_sel.options[topic_sel.options.length] = new Option(state, countryStateInfo[this.value][state]);
+		 }
+	}
+}
+
+
+$(document).ready(function(){
+    $("#filter_s").click(function () {
+        if($("#topic_sel option:selected").val() !== ""){
+            window.location.href = $("#topic_sel").val();
+        }
+    })
+})
+
+
+</script>
+    
+</body>
+</html>
